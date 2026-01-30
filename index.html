@@ -95,11 +95,47 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+            position: relative;
+            min-height: 10vh; /* full screen hero */
+            background-image: url("header.jpg"); /* <-- your image path */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
             color: white;
-            padding: 80px 20px;
+        }
+
+        /* Dark overlay */
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.55); /* adjust darkness */
+            z-index: 1;
+        }
+
+        /* Text container */
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            padding: 2rem;
             text-align: center;
-            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            line-height: 1.6;
         }
 
         .hero h1 {
@@ -345,6 +381,13 @@
                 gap: 15px;
             }
         }
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .article-section {
+            scroll-margin-top: 200px;
+        }
     </style>
 </head>
 <body>
@@ -366,9 +409,17 @@
     </header>
 
     <div class="hero">
-        <h1>Bearing Witness to Iran's Fight for Freedom</h1>
-        <p>Documenting the January 2026 uprising and the Islamic Republic regime's genocidal response to the Iranian people's call for democracy, human rights, and freedom. We call for international action under Responsibility to Protect (R2P) to stop this genocide.</p>
+        <div class="hero-content">
+            <h1>Bearing Witness to Iran's Fight for Freedom</h1>
+            <p>
+                <br><br><br><br><br><br>
+                Documenting the January 2026 uprising and the Islamic Republic regime's
+                genocidal response to the Iranian people's call for democracy, human
+                rights, and freedom.
+            </p>
+        </div>
     </div>
+
 
     <div class="container">
         <div class="content-grid">
