@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iran Awareness - The Voice of Freedom</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1a1a1a;
+            --secondary-color: #2c2c2c;
+            --accent-color: #c41e3a;
+            --text-color: #333;
+            --light-gray: #f5f5f5;
+            --border-color: #ddd;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: #fff;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Merriweather', serif;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        /* Header */
+        header {
+            background: var(--primary-color);
+            color: white;
+            padding: 20px 0;
+            border-bottom: 4px solid var(--accent-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 900;
+            font-family: 'Merriweather', serif;
+            letter-spacing: -1px;
+        }
+
+        .tagline {
+            font-size: 13px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 5px;
+            color: #ccc;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 900;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .main-content {
+            padding-right: 40px;
+            border-right: 1px solid var(--border-color);
+        }
+
+        .sidebar {
+            padding-left: 20px;
+        }
+
+        .article-section {
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .article-section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 36px;
+            margin-bottom: 25px;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+        }
+
+        .subsection-title {
+            font-size: 24px;
+            margin: 30px 0 15px;
+            color: var(--secondary-color);
+        }
+
+        .article-meta {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 20px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .article-content p {
+            margin-bottom: 20px;
+            font-size: 17px;
+            line-height: 1.8;
+        }
+
+        .highlight-box {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            margin: 30px 0;
+            font-size: 16px;
+        }
+
+        .critical-box {
+            background: #f8d7da;
+            border-left: 5px solid var(--accent-color);
+            padding: 20px;
+            margin: 30px 0;
+        }
+
+        .critical-box h3 {
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+
+        .stat-box {
+            background: var(--light-gray);
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--accent-color);
+            font-family: 'Merriweather', serif;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            color: var(--text-color);
+            font-weight: 600;
+        }
+
+        /* Sidebar */
+        .sidebar-section {
+            background: var(--light-gray);
+            padding: 25px;
+            margin-bottom: 30px;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .sidebar-section h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .sidebar-section ul {
+            list-style: none;
+        }
+
+        .sidebar-section li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 15px;
+        }
+
+        .sidebar-section li:last-child {
+            border-bottom: none;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 4px solid var(--accent-color);
+        }
+
+        footer p {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .quote-box {
+            background: var(--light-gray);
+            border-left: 5px solid var(--accent-color);
+            padding: 25px;
+            margin: 30px 0;
+            font-style: italic;
+            font-size: 18px;
+            color: #555;
+        }
+
+        .quote-box cite {
+            display: block;
+            margin-top: 15px;
+            font-style: normal;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-left: 2px solid var(--accent-color);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            background: var(--accent-color);
+            border-radius: 50%;
+        }
+
+        .timeline-date {
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+
+        .timeline-content {
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 968px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .main-content {
+                border-right: none;
+                padding-right: 0;
+            }
+
+            .sidebar {
+                padding-left: 0;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div>
+                <div class="logo">IRAN AWARENESS</div>
+                <div class="tagline">The Voice of Freedom</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#crisis">Crisis</a></li>
+                    <li><a href="#massacres">Genocide</a></li>
+                    <li><a href="#opposition">Opposition</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="hero">
+        <h1>Bearing Witness to Iran's Fight for Freedom</h1>
+        <p>Documenting the January 2026 uprising and the Islamic Republic regime's genocidal response to the Iranian people's call for democracy, human rights, and freedom. We call for international action under Responsibility to Protect (R2P) to stop this genocide.</p>
+    </div>
+
+    <div class="container">
+        <div class="content-grid">
+            <main class="main-content">
+                <article id="about" class="article-section">
+                    <div class="article-meta">Mission Statement</div>
+                    <h2 class="section-title">Who We Are</h2>
+                    <div class="article-content">
+                        <p>Iran Awareness is an independent platform dedicated to documenting and raising global awareness about the ongoing struggle for freedom, democracy, and human rights in Iran. We exist to amplify the voices of millions of Iranians who have taken to the streets demanding change, and to ensure that the world bears witness to both their courage and the brutal repression they face.</p>
+                        
+                        <p>In January 2026, Iran witnessed the largest uprising since the 1979 Islamic Revolution. What began as economic protests rapidly evolved into a nationwide movement calling for regime change. The response from Iran's authoritarian government has been nothing short of catastrophic, with thousands of peaceful protesters killed, tens of thousands arrested, and a complete internet blackout imposed to hide the scale of atrocities from the world.</p>
+
+                        <div class="highlight-box">
+                            <strong>Our Goal:</strong> To provide accurate, verified information about the situation in Iran, to honor those who have lost their lives in the pursuit of freedom, and to support the democratic opposition working toward a free, secular, and democratic Iran.
+                        </div>
+
+                        <p>We stand with the Iranian people in their demand for:</p>
+                        <ul style="margin-left: 30px; margin-bottom: 20px; line-height: 2;">
+                            <li>An end to the Islamic Republic regime</li>
+                            <li>Free and fair democratic elections</li>
+                            <li>Separation of religion and state</li>
+                            <li>Recognition of fundamental human rights</li>
+                            <li>Women's equality and freedom</li>
+                            <li>Economic prosperity and ending corruption</li>
+                            <li>Integration with the democratic world</li>
+                        </ul>
+
+                        <p>Through documentation, awareness campaigns, and collaboration with human rights organizations worldwide, we work to ensure that the sacrifices of the Iranian people are not forgotten, and that those responsible for crimes against humanity are held accountable.</p>
+                    </div>
+                </article>
+
+                <article id="crisis" class="article-section">
+                    <div class="article-meta">Breaking Crisis - January 2026</div>
+                    <h2 class="section-title">The January 2026 Uprising</h2>
+                    <div class="article-content">
+                        <p>On December 28, 2025, protests erupted across Iran in what would become the most significant challenge to the Islamic Republic since its establishment in 1979. Initially sparked by economic grievances, including record-high inflation exceeding 42 percent, dramatic currency devaluation, and widespread poverty, the demonstrations rapidly transformed into a full-scale revolutionary movement.</p>
+
+                        <h3 class="subsection-title">The Economic Trigger</h3>
+                        <p>The Iranian rial had lost more than 40 percent of its value since June 2025, following a 12-day conflict with Israel that devastated Iran's nuclear program. International sanctions, reimposed by the UN after Iran violated the 2015 nuclear deal, further crippled the economy. Food prices skyrocketed, with basic items like cooking oil doubling in price overnight.</p>
+
+                        <p>The government's response was callous: President Masoud Pezeshkian proposed an annual budget that increased security spending by nearly 150 percent while offering wage increases amounting to only about two-fifths of the rate of inflation. This prioritization of repression over welfare became a rallying cry for protesters who chanted, "We revolt due to hunger."</p>
+
+                        <h3 class="subsection-title">From Economic Protest to Revolutionary Movement</h3>
+                        <p>What distinguished the January 2026 uprising from previous protests was its immediate political character. Within days, the movement had spread to all 31 provinces of Iran. Protesters didn't simply demand economic relief—they called for the complete overthrow of the regime, chanting "Death to the Dictator" in reference to Ali Khamenei and "Death to Khamenei" in city streets and bazaars.</p>
+
+                        <p>The historic Grand Bazaar in Tehran, the traditional heart of Iran's economic and political life, became an epicenter of resistance. Shopkeepers and merchants shut down operations and joined demonstrations, with workers from the central fruit and vegetable market stopping distribution cycles to join the nationwide uprising.</p>
+
+                        <p>University students at prestigious institutions including the University of Tehran, Sharif University of Technology, and Amirkabir University of Technology released statements declaring: "This criminal system has taken our future hostage for 47 years." They joined the streets en masse, linking arms with ordinary citizens, workers, and bazaaris in a unified call for freedom.</p>
+
+                        <div class="quote-box">
+                            "More than a week of protests in Iran reflects not only worsening economic conditions, but longstanding anger at government repression and regime policies that have led to Iran's global isolation."
+                            <cite>— The Soufan Center</cite>
+                        </div>
+
+                        <h3 class="subsection-title">A Coordinated National Movement</h3>
+                        <p>On January 8, 2026, a pivotal moment occurred when opposition leader Reza Pahlavi issued a direct call for nationwide demonstrations at a specific time. For the first time in decades, such a call was answered simultaneously across Iran, with millions taking to the streets in coordinated action. This marked a fundamental shift—demonstrating that the opposition had achieved a level of organization and popular support unprecedented since 1979.</p>
+
+                        <p>The protests spread to at least 130 cities, encompassing urban centers and small towns alike. The movement crossed traditional boundaries of ethnicity, class, and age. Children, teenagers, young adults, and elderly Iranians united in their demand for change. Women played a particularly prominent role, continuing the legacy of the "Woman, Life, Freedom" movement that had shaken Iran in 2022-2023 following the death of Mahsa Amini in police custody.</p>
+
+                        <p>Protesters openly flew the Lion and Sun flag—the pre-1979 national flag—rather than the current Islamic Republic flag, symbolizing their rejection of the entire political system. International platforms including Twitter's emoji library changed the Iran flag emoji from the Islamic Republic design to the Lion and Sun flag in acknowledgment of the movement's significance.</p>
+
+                        <p>Throughout the country, demonstrators chanted powerful slogans that captured their aspirations:</p>
+                        <ul style="margin-left: 30px; margin-bottom: 20px; line-height: 2;">
+                            <li><strong>"Javid Shah"</strong> (جاوید شاه) - "Long Live the King!" - expressing support for Reza Pahlavi</li>
+                            <li><strong>"Pahlavi Returns!"</strong> - calling for the restoration of democratic leadership</li>
+                            <li><strong>"Death to Khamenei"</strong> - directly challenging the dictator</li>
+                            <li><strong>"Death to the Dictator"</strong> - rejection of authoritarian rule</li>
+                            <li><strong>"This year is the year of sacrifice, Seyed Ali will be overthrown"</strong> - commitment to ending Khamenei's reign</li>
+                            <li><strong>"Woman, Life, Freedom"</strong> - continuing the legacy from 2022</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article id="massacres" class="article-section">
+                    <div class="article-meta">Human Rights Crisis - Genocide in Progress</div>
+                    <h2 class="section-title">The 2026 Iran Genocide</h2>
+                    <div class="article-content">
+                        <p>The Islamic Republic's response to peaceful protesters has been swift, brutal, and deadly. What unfolded in January 2026 represents systematic genocide—the largest massacres in modern Iranian history and one of the worst state-sponsored mass killings of the 21st century.</p>
+
+                        <div class="highlight-box">
+                            <strong>URGENT: Call for Responsibility to Protect (R2P)</strong><br>
+                            The international community has a moral and legal obligation to intervene when a state manifestly fails to protect its population from genocide and crimes against humanity. The Islamic Republic regime's systematic massacre of peaceful protesters constitutes genocide against the Iranian people. We call upon the United Nations, democratic nations, and international human rights bodies to invoke the Responsibility to Protect (R2P) doctrine and take immediate action to stop this genocide and hold perpetrators accountable for crimes against humanity.
+                        </div>
+
+                        <div class="critical-box">
+                            <h3>⚠️ GENOCIDE: True Death Toll</h3>
+                            <p><strong>Verified Independent Sources:</strong> Between 27,500 and 36,500+ killed</p>
+                            <p><strong>Note:</strong> The Islamic Republic regime has systematically lied about casualty figures to hide the scale of genocide. Internal government reports confirm over 36,500 deaths. The regime's official numbers are propaganda designed to conceal crimes against humanity.</p>
+                        </div>
+
+                        <div class="stat-box">
+                            <span class="stat-number">36,500+</span>
+                            <span class="stat-label">Estimated Deaths from Security Forces' Violence</span>
+                        </div>
+
+                        <h3 class="subsection-title">The Genocide Begins</h3>
+                        <p>On January 8, 2026, dictator Ali Khamenei issued a direct order to security forces: "Crush the protests by any means necessary." What followed has been described by observers as "Iran's Babi Yar"—a reference to the Nazi massacre in Ukraine—given its tremendous scale and brutality. This was not crowd control. This was genocide.</p>
+
+                        <p>Secretary of the Supreme National Security Council Ali Larijani has been identified as the mastermind behind the massacres. Under his coordination, Iranian security forces, including the Revolutionary Guards, Basij militia, and plainclothes agents, deployed across the country with orders to use lethal force against demonstrators.</p>
+
+                        <h3 class="subsection-title">Methods of Repression</h3>
+                        <p>Security forces employed systematic and indiscriminate violence against protesters:</p>
+
+                        <ul style="margin-left: 30px; margin-bottom: 20px; line-height: 2;">
+                            <li><strong>Live Ammunition:</strong> Forces fired directly into crowds of peaceful protesters without warning, using automatic weapons including Kalashnikov rifles.</li>
+                            <li><strong>Sniper Positions:</strong> Government forces stationed snipers on rooftops, footbridges, and elevated positions to target protesters, with witnesses reporting snipers aiming specifically for heads and torsos.</li>
+                            <li><strong>Mass Shootings:</strong> In multiple cities, security forces opened fire on trapped crowds, including one incident in Rasht where forces surrounded protesters in the bazaar, set it on fire, and shot those attempting to escape.</li>
+                            <li><strong>Hospital Raids:</strong> Security forces entered hospitals to seize bodies of killed protesters and forcibly removed wounded demonstrators to prevent documentation of casualties.</li>
+                            <li><strong>Targeted Killings:</strong> At least 35 minors under age 18 were killed, with three children documented among the dead in the first eight days alone.</li>
+                        </ul>
+
+                        <h3 class="subsection-title">The January 8 Internet Blackout</h3>
+                        <p>On January 8, 2026, the Iranian government implemented a complete nationwide internet shutdown, cutting off Iran from the outside world. This deliberate communications blackout served a sinister purpose: to prevent documentation of the massacres and hide the scale of killing from international observers.</p>
+
+                        <p>Nobel Peace Prize laureate Shirin Ebadi issued a dire warning on January 9: "Under the Internet blackout, the Islamic Republic may massacre the protesters." Her fears proved tragically prescient. During the blackout period, the death toll soared into the tens of thousands, with limited information escaping only through satellite connections like Starlink.</p>
+
+                        <div class="quote-box">
+                            "We're standing up for a revolution, but we need help. Snipers have been stationed behind the Tajrish Arg area. We saw hundreds of bodies throughout Tehran."
+                            <cite>— Protester testimony via Starlink, January 10, 2026</cite>
+                        </div>
+
+                        <h3 class="subsection-title">Mass Casualties and Makeshift Morgues</h3>
+                        <p>The scale of killing overwhelmed Iran's morgue system. Distressing footage emerged on January 10 showing a makeshift morgue established at the Legal Medicine Organization in Kahrizak, near Tehran. Video analysis by Amnesty International identified at least 205 distinct body bags in this overflow facility alone, with distraught families searching for their loved ones among the dead.</p>
+
+                        <p>German-Iranian surgeon Amir Parasta, analyzing hospital records, reported a total of 30,304 protest-related deaths, explicitly noting this figure excluded deaths in military hospitals, bodies taken directly to morgues, and deaths in hospitals not included in his data set. Medical workers described the Iranian administration running out of body bags and resorting to using semi-trailer trucks instead of ambulances.</p>
+
+                        <p>One medical worker from Mashhad told Amnesty International: "On the night of January 9, the deceased bodies of 150 young protesters were brought into one hospital and then taken to Behesht Reza Cemetery near Mashhad."</p>
+
+                        <h3 class="subsection-title">Regional Massacres</h3>
+                        
+                        <p><strong>Tehran:</strong> The capital bore the highest death toll. On January 8 alone, at least 217 people were killed in Tehran. Witnesses described "hundreds of bodies" throughout the city, with particularly heavy casualties in neighborhoods like Tehranpars and Narmak where security forces fired from police station rooftops.</p>
+
+                        <p><strong>Rasht:</strong> At least 392 people were killed in Rasht, the vast majority during the internet blackout period. In one horrific incident, security forces surrounded and trapped protesters inside the Rasht Bazaar, set the building on fire, and shot people attempting to surrender or escape while blocking fire trucks from responding.</p>
+
+                        <p><strong>Shiraz:</strong> Hospitals were overwhelmed with injured protesters, many suffering gunshot wounds. Security forces were filmed driving vehicles over protest barriers.</p>
+
+                        <p><strong>Mashhad:</strong> In Razavi Khorasan province, security forces fired directly at protesters and bystanders without warning from elevated positions. One eyewitness described: "They were using tear gas and stun grenades and shot directly at protesters. They even fired tear gas inside people's homes."</p>
+
+                        <p><strong>Nassimshahr:</strong> A protester testified: "They relentlessly fired on people as they were fleeing. They killed people on [January 8]. They also fired at everyone on [January 9] and killed people. Tell the whole world."</p>
+
+                        <h3 class="subsection-title">Systematic Arrest and Torture</h3>
+                        <p>Alongside the killings, Iranian authorities conducted mass arrests. As of mid-January, more than 18,000 people had been detained, according to human rights groups. Many were subjected to torture, forced confessions, and threats of execution.</p>
+
+                        <p>The regime announced plans to execute detained protester Erfan Soltani, age 26, on January 14, 2026. This prompted a warning from US President Donald Trump that executions would trigger strong American action. Chief Justice Gholam-Hossein Mohseni-Ejei declared there would be "no leniency" for protesters, whom he accused of working with foreign enemies.</p>
+
+                        <h3 class="subsection-title">International Condemnation</h3>
+                        <p>The massacres drew worldwide condemnation. Amnesty International documented mass unlawful killings and called for global diplomatic action to end impunity. The organization verified video evidence showing security forces systematically firing on fleeing protesters, pursuing wounded individuals, and preventing medical care.</p>
+
+                        <p>President Trump repeatedly warned Iran that continued killing would result in US intervention, stating: "When they start killing thousands of people... It's not going to work out good." He threatened that Iran's leaders "have been told very strongly that if they do that, they're going to have to pay hell."</p>
+
+                        <p>Israeli Prime Minister Benjamin Netanyahu also backed the protesters, though Israel maintained a cautious military posture. The international community, however, ultimately did not intervene militarily to stop the massacres.</p>
+
+                        <h3 class="subsection-title">The Regime's Lies and Propaganda</h3>
+                        <p>Dictator Ali Khamenei acknowledged that "thousands of people" had been killed but blamed US President Trump and falsely claimed all protesters were "rioters and terrorists" affiliated with America and Israel. The regime characterized the democratic uprising as a foreign-orchestrated plot, denying Iranians' genuine grievances and aspirations for freedom—a classic tactic of authoritarian regimes committing genocide.</p>
+
+                        <p>On January 21, Iranian state television released fabricated death toll figures designed to minimize the scale of their genocide. Internal government documents, however, tell the true story. Reports to the Ministry of Interior on January 20 showed counts above 30,000. Intelligence Organization of the Islamic Revolutionary Guard Corps reported 33,000 deaths on January 22 and 36,500 on January 24.</p>
+
+                        <p>Independent documentation by the US-based Human Rights Activists News Agency (HRANA) documented thousands of deaths, including 4,251 protesters and 35 minors under age 18. German-Iranian surgeon Amir Parasta's analysis of hospital records revealed 30,304 protest-related deaths, explicitly excluding military hospitals and direct-to-morgue transfers.</p>
+
+                        <p>The regime's propaganda numbers are a transparent lie designed to cover up genocide. The true death toll is between 27,500 and 36,500+ killed in this systematic massacre of the Iranian people.</p>
+
+                        <div class="critical-box">
+                            <h3>Ongoing Genocide</h3>
+                            <p>As of January 25, 2026, the Islamic Republic has reasserted some control through genocide and overwhelming force, but resistance continues. Iranians have been reported dancing at funerals of massacre victims as a form of defiance. The regime's use of systematic mass killing to maintain power constitutes genocide and crimes against humanity. The international community must invoke Responsibility to Protect (R2P) to stop this ongoing genocide and ensure justice for the victims.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article id="opposition" class="article-section">
+                    <div class="article-meta">Leadership Profile</div>
+                    <h2 class="section-title">Reza Pahlavi: Opposition Leader</h2>
+                    <div class="article-content">
+                        <p>Reza Pahlavi has emerged as the most prominent leader of the Iranian opposition during the 2025-2026 uprising. The 65-year-old son of Mohammad Reza Pahlavi—Iran's last shah before the 1979 revolution—has lived in exile for 47 years, primarily in the United States, but has maintained consistent opposition to the Islamic Republic throughout this period.</p>
+
+                        <h3 class="subsection-title">Background and Early Life</h3>
+                        <p>Born in Tehran on October 31, 1960, Reza Pahlavi was officially named crown prince at age seven. His path seemed destined for the throne until the 1979 revolution upended Iran. At age 17, he left Iran for fighter pilot training at Reese Air Force Base in Texas. While he was away, the monarchy collapsed and the Islamic Republic was established, preventing his return.</p>
+
+                        <p>Pahlavi completed his training and later earned a degree in political science from the University of Southern California. During the Iran-Iraq War in the 1980s, he famously volunteered to serve as a fighter pilot for Iran but was rejected by the Islamic Republic authorities. After his father died in exile in 1980, Pahlavi declared himself shah of Iran, styling himself "Reza Shah II," though he would later evolve his political message.</p>
+
+                        <h3 class="subsection-title">Political Evolution and Democratic Advocacy</h3>
+                        <p>For over 40 years, Pahlavi advocated for nonviolent change and a referendum to determine Iran's future government. He repeatedly stated he was "not personally seeking political office" and emphasized that any transition must be based on free elections and a secular democratic system. According to interviews, he believes in establishing a liberal, democratic Iran with full separation of religion and state.</p>
+
+                        <p>In 2013, Pahlavi co-founded the Iran National Council (INC), an umbrella organization of opposition groups headquartered in Paris, though it suffered from internal divisions. In 2019, he helped establish the Phoenix Project of Iran, a Washington D.C.-based think tank dedicated to regime change and transition planning.</p>
+
+                        <p>His advocacy focuses on:</p>
+                        <ul style="margin-left: 30px; margin-bottom: 20px; line-height: 2;">
+                            <li>Free and fair democratic elections</li>
+                            <li>Secular government with separation of religion and state</li>
+                            <li>Protection of human rights and women's equality</li>
+                            <li>Alignment with Western democracies and Israel</li>
+                            <li>National referendum to determine Iran's political future</li>
+                        </ul>
+
+                        <h3 class="subsection-title">The January 2026 Turning Point</h3>
+                        <p>The January 2026 protests marked a dramatic shift in Pahlavi's approach and visibility. On January 8, he issued a direct call for coordinated nationwide demonstrations at a specific time—and millions of Iranians answered. This represented the first time in decades that such a call from exile had been successfully answered at scale.</p>
+
+                        <p>In a statement that signaled escalating tactics, Pahlavi declared: "Our goal is no longer merely to come into the streets. The goal is to prepare to seize city centers and hold them." This more confrontational stance reflected the urgency of the moment and the regime's genocidal crackdown.</p>
+
+                        <div class="quote-box">
+                            "They are demanding a credible new path forward. They have called for me to lead."
+                            <cite>— Reza Pahlavi, Washington D.C. Press Conference, January 16, 2026</cite>
+                        </div>
+
+                        <p>Demonstrators across Iran chanted Pahlavi's name and the powerful slogan <strong>"Javid Shah"</strong> (جاوید شاه - "Long Live the King!"), expressing their support for his leadership and their desire for the return of constitutional monarchy. Protesters repeatedly called for <strong>"Pahlavi Returns!"</strong> as they displayed his image at rallies and flew the Lion and Sun flag. These chants represented not mere nostalgia, but a clear political demand for new leadership to replace the genocidal Islamic Republic regime.</p>
+
+                        <p>Protesters in London, Berlin, San Francisco, and other international cities held massive solidarity demonstrations featuring photographs of Reza Pahlavi and chanting "Javid Shah." The Lion and Sun flag associated with the Pahlavi era became the dominant symbol of the protest movement, completely replacing the Islamic Republic flag in demonstrations worldwide.</p>
+
+                        <h3 class="subsection-title">Support and Skepticism</h3>
+                        <p>Pahlavi's actual level of support inside Iran remains subject to debate. A 2023 poll by the pro-Pahlavi Empirical Research and Forecasting Institute found nearly 80 percent of respondents preferred him over Islamic Republic leadership. An independent 2022 poll with 158,000 respondents gave him 32.8 percent support—the highest of any individual figure—though this left roughly two-thirds either supporting others or undecided.</p>
+
+                        <p>Critics question whether Pahlavi can unite Iran's fractured opposition, which includes leftists, republicans, ethnic minorities, religious groups, and monarchists. Some analysts argue his prominence doesn't translate into the organizational capacity needed to lead a transition. Bobby Ghosh of Time Magazine noted that Pahlavi's "failure to restrain supporters who target non-monarchist dissidents has fractured what should be a united front."</p>
+
+                        <p>Complicating matters are reports of Israeli-funded influence operations on Persian-language social media promoting Pahlavi, raising questions about the authenticity of his online support. There are also concerns about manipulation, with some suggesting Iranian government cyber-armies may be amplifying Pahlavi support to sow discord within the opposition.</p>
+
+                        <h3 class="subsection-title">International Relations</h3>
+                        <p>US President Donald Trump has described Pahlavi as a "nice guy" but expressed uncertainty about his viability: "He seems very nice, but I don't know how he'd play within his own country." The Trump administration has maintained that "it's up to Iranians to choose their own leaders" and has not officially endorsed Pahlavi, though his top envoy Steve Witkoff has held talks with the prince.</p>
+
+                        <p>During Trump's first term, senior officials maintained close contact with Pahlavi and opposition activists. In his second term, however, Pahlavi has struggled to secure an inside track with the president's advisers, though he publicly praised Trump for promising to protect protesters and called him "a man of his word."</p>
+
+                        <h3 class="subsection-title">A Complex Legacy</h3>
+                        <p>Pahlavi's father, Mohammad Reza Shah, ruled Iran from 1941 to 1979 with significant support from the United States, France, and Israel. His reign was marked by modernization efforts but also severe repression. The SAVAK secret police subjected political opponents to surveillance, imprisonment, torture, and execution. Amnesty International estimated between 25,000 and 100,000 political prisoners existed in Iran during 1974-75.</p>
+
+                        <p>Nostalgia for the pre-revolutionary era has grown among younger Iranians who never experienced the shah's rule but have lived their entire lives under the Islamic Republic's restrictions. Chants of "Reza Shah, may God bless your soul" referring to Pahlavi's grandfather emerged in protests as early as 2018—sentiments that would have been unthinkable in previous decades.</p>
+
+                        <p>Whether Reza Pahlavi represents genuine hope for democratic transition or merely monarchical restoration remains a source of debate. What is clear is that he has successfully positioned himself as the most visible opposition figurehead during Iran's most significant uprising in 47 years. As one analyst put it, "That is not popularity. That is operational leadership."</p>
+
+                        <h3 class="subsection-title">Current Status</h3>
+                        <p>Pahlavi continues to coordinate with opposition groups and international supporters from his base in the United States. He has promised to return to Iran when conditions permit and continues to call for regime change, democratic elections, and a secular government that respects human rights. His role in any future Iranian government remains uncertain, dependent on both the success of the pro-democracy movement and whether Iranians ultimately choose him as a leader through free elections.</p>
+                    </div>
+                </article>
+
+                <article class="article-section">
+                    <div class="article-meta">Timeline</div>
+                    <h2 class="section-title">Key Events</h2>
+                    <div class="article-content">
+                        <div class="timeline-item">
+                            <div class="timeline-date">December 28, 2025</div>
+                            <div class="timeline-content">Protests begin in Tehran's Grand Bazaar over economic crisis, inflation exceeding 42%, and currency collapse. Demonstrations rapidly spread to other cities.</div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-date">January 1, 2026</div>
+                            <div class="timeline-content">Protests expand nationwide. Dozens arrested, first reports of security forces firing live ammunition at protesters. Students at major universities release statements condemning the regime.</div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-date">January 6-7, 2026</div>
+                            <div class="timeline-content">Grand Bazaar workers and merchants shut down operations completely. Movement spreads to 110 cities. Death toll reaches 36 people, with over 2,000 arrested.</div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-date">January 8, 2026</div>
+                            <div class="timeline-content">
+                                <strong>Critical turning point - GENOCIDE BEGINS:</strong> Dictator Ali Khamenei orders: "Crush the protests by any means necessary."<br><br>
+                                Reza Pahlavi issues coordinated call for nationwide demonstrations—millions respond simultaneously, chanting "Javid Shah" (Long Live the King) and "Pahlavi Returns."<br><br>
+                                Government implements complete internet blackout to hide genocide.<br><br>
+                                Security forces begin using snipers and mass shooting tactics. Tehran reports 217 killed in single day.
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-date">January 9-10, 2026</div>
+                            <div class="timeline-content">Massacres intensify under cover of internet blackout. Nobel laureate Shirin Ebadi warns of potential mass killings. Witnesses via Starlink report "hundreds of bodies" throughout Tehran. Makeshift morgues established as official facilities overwhelmed. Iran International estimates 2,000 killed in 48 hours.</div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-date">January 12, 2026</div>
+                            <div class="timeline-content">Time magazine reports death toll may have reached 6,000. German-Iranian surgeon estimates 30,304 deaths from hospital records, excluding military hospitals and direct-to-morgue transfers.</div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-date">January 13, 2026</div>
+                            <div class="timeline-content">President Trump warns Iran he will take "very strong action" if protesters continue to be killed. Over 18,000 people arrested. US State Department warns Iran plans to execute protester Erfan Soltani.</div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-date">January 20-24, 2026</div>
+                            <div class="timeline-content">Internal Iranian government reports show death counts between 27,500 and 36,500. Intelligence Organization of Islamic Revolutionary Guard Corps reports 36,500 deaths by January 24.</div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-date">January 21-25, 2026</div>
+                            <div class="timeline-content">Regime releases propaganda claiming only 3,117 deaths—a transparent lie. Internal Iranian government documents confirm between 27,500 and 36,500+ killed. Khamenei blames "thousands killed" on Trump and foreign influence, denying the genocide committed by his regime.</div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-date">Present Day</div>
+                            <div class="timeline-content">Genocide continues. Between 27,500 and 36,500+ people have been systematically murdered by the Islamic Republic regime. Tens of thousands remain imprisoned. Iranians continue to resist, chanting "Javid Shah" and "Pahlavi Returns" even as they face death. The international community must invoke R2P to stop this genocide.</div>
+                        </div>
+                    </div>
+                </article>
+            </main>
+
+            <aside class="sidebar">
+                <div class="sidebar-section">
+                    <h3>Genocide Statistics</h3>
+                    <ul>
+                        <li><strong>31 Provinces:</strong> All involved in protests</li>
+                        <li><strong>130+ Cities:</strong> With active demonstrations</li>
+                        <li><strong>27,500-36,500+:</strong> MURDERED by regime (true death toll)</li>
+                        <li><strong>18,000+:</strong> Arrested and detained</li>
+                        <li><strong>35+ Children:</strong> Killed by security forces</li>
+                        <li><strong>42%+:</strong> Annual inflation rate</li>
+                        <li><strong>40%:</strong> Currency devaluation since June 2025</li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>International Response</h3>
+                    <ul>
+                        <li>Amnesty International: Calls for global action to end impunity</li>
+                        <li>UN: Reimposed sanctions September 2025</li>
+                        <li>US President Trump: Threatened strong action if killing continues</li>
+                        <li>Nobel laureate Shirin Ebadi: Warned of planned massacres</li>
+                        <li>Israel: Increased war readiness but no military intervention</li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>Human Rights Organizations Monitoring Iran</h3>
+                    <ul>
+                        <li>Amnesty International</li>
+                        <li>Human Rights Watch</li>
+                        <li>Iran Human Rights (IHR)</li>
+                        <li>Human Rights Activists News Agency (HRANA)</li>
+                        <li>Center for Human Rights in Iran</li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>Symbols of the Movement</h3>
+                    <ul>
+                        <li><strong>Lion and Sun Flag:</strong> Pre-1979 national flag representing secular Iran</li>
+                        <li><strong>"Javid Shah" (جاوید شاه):</strong> "Long Live the King!" - Support for Reza Pahlavi</li>
+                        <li><strong>"Pahlavi Returns":</strong> Call for restoration of leadership</li>
+                        <li><strong>"Death to Khamenei":</strong> Direct challenge to the dictator</li>
+                        <li><strong>"Death to the Dictator":</strong> Rejection of authoritarianism</li>
+                        <li><strong>"This year is the year of sacrifice":</strong> Commitment to change</li>
+                        <li><strong>"Woman, Life, Freedom":</strong> Continuing legacy from 2022 movement</li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>Opposition Coalition</h3>
+                    <ul>
+                        <li>Reza Pahlavi (Prominent leader)</li>
+                        <li>Iran National Council (INC)</li>
+                        <li>Phoenix Project of Iran</li>
+                        <li>Various ethnic and minority groups</li>
+                        <li>Student movements</li>
+                        <li>Labor unions and bazaaris</li>
+                        <li>Women's rights activists</li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p><strong>Iran Awareness</strong> | The Voice of Freedom</p>
+            <p style="margin-top: 15px; max-width: 800px; margin-left: auto; margin-right: auto;">We stand in solidarity with all Iranians fighting for freedom, democracy, and human rights. The struggle for a free Iran continues under their rallying cry "Javid Shah" (Long Live the King) and "Pahlavi Returns." The world must bear witness to the genocide committed by the Islamic Republic regime against the Iranian people and invoke Responsibility to Protect (R2P) to stop these crimes against humanity.</p>
+            <p style="margin-top: 20px; font-size: 13px; color: #aaa;">Between 27,500 and 36,500+ Iranians have been murdered by the Islamic Republic regime in January 2026. This is genocide. The regime's official numbers are propaganda lies. The international community must act now.</p>
+            <p style="margin-top: 15px; font-size: 13px; color: #aaa;">© 2026 Iran Awareness. Information updated as of January 30, 2026.</p>
+        </div>
+    </footer>
+</body>
+</html>
