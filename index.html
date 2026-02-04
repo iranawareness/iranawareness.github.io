@@ -585,6 +585,104 @@
         .references-section a:hover {
             text-decoration: underline;
         }
+
+        /* Lightbox/Zoom styles */
+        .zoom-cursor {
+            cursor: zoom-in;
+            transition: opacity 0.3s;
+        }
+
+        .zoom-cursor:hover {
+            opacity: 0.9;
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 95%;
+            max-height: 95%;
+            object-fit: contain;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+            cursor: zoom-out;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 50px;
+            color: white;
+            cursor: pointer;
+            background: none;
+            border: none;
+            z-index: 10001;
+            line-height: 1;
+            transition: transform 0.2s;
+        }
+
+        .lightbox-close:hover {
+            transform: scale(1.2);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 50px;
+            color: white;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            padding: 10px 20px;
+            z-index: 10001;
+            transition: background 0.3s;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .lightbox-prev {
+            left: 20px;
+        }
+
+        .lightbox-next {
+            right: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .lightbox img {
+                max-width: 98%;
+                max-height: 98%;
+            }
+            
+            .lightbox-close {
+                top: 10px;
+                right: 10px;
+                font-size: 40px;
+            }
+            
+            .lightbox-nav {
+                font-size: 30px;
+                padding: 5px 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -599,6 +697,7 @@
             <nav>
                 <ul>
                     <li><a href="#about">About</a></li>
+                    <li><a href="#story">The Story</a></li>
                     <li><a href="#crisis">Crisis</a></li>
                     <li><a href="#massacres">Genocide</a></li>
                     <li><a href="#opposition">Opposition</a></li>
@@ -650,6 +749,31 @@
                         >
 
                         <p>Through documentation, awareness campaigns, and collaboration with human rights organizations worldwide, we work to ensure that the sacrifices of the Iranian people are not forgotten, and that those responsible for crimes against humanity are held accountable.</p>
+                    </div>
+                </article>
+
+                
+
+                <!-- Add this section after "About" and before "Crisis" -->
+                <article id="story" class="article-section">
+                    <div class="article-meta">Visual Narrative</div>
+                    <h2 class="section-title">A Modern Shahnameh: Iran's Five-Act Tragedy</h2>
+                    <div class="article-content">
+                        <p>The story of Iran's fight for freedom unfolds like a classical tragedy—from the birth of tyranny in 1979 to the ongoing struggle for liberation. This visual narrative captures the arc of resistance, sacrifice, and the unfinished battle for Iran's future.</p>
+                        
+                        <img 
+                            src="assets/Brochure1.jpg" 
+                            alt="Iran: A Five-Act Tragedy - Acts I and II" 
+                            class="zoom-cursor"
+                            onclick="openLightbox(0)"
+                            style="width: 100%; display: block; margin: 30px 0 0 0; border: 1px solid var(--border-color);">
+                        
+                        <img 
+                            src="assets/Brochure2.jpg" 
+                            alt="Iran: A Five-Act Tragedy - Acts III, IV, and V" 
+                            class="zoom-cursor"
+                            onclick="openLightbox(1)"
+                            style="width: 100%; display: block; margin: 0 0 30px 0; border: 1px solid var(--border-color);">
                     </div>
                 </article>
 
@@ -1304,6 +1428,14 @@
         </div>
     </div>
 
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+        <button class="lightbox-nav lightbox-prev" onclick="event.stopPropagation(); changeLightboxImage(-1)">&#10094;</button>
+        <button class="lightbox-nav lightbox-next" onclick="event.stopPropagation(); changeLightboxImage(1)">&#10095;</button>
+        <img id="lightbox-img" src="" alt="">
+    </div>
+
     <footer>
         <div class="container">
             <p><strong>Iran Awareness</strong> | The Voice of Freedom</p>
@@ -1418,8 +1550,69 @@
             window.addEventListener("scroll", setActiveLink);
             setActiveLink();
         });
+
+        
         </script>
 
+        <script>
+            // Lightbox functionality
+            const lightboxImages = [
+                'assets/Brochure1.jpg',
+                'assets/Brochure2.jpg'
+            ];
+            
+            let currentLightboxIndex = 0;
+            
+            function openLightbox(index) {
+                currentLightboxIndex = index;
+                const lightbox = document.getElementById('lightbox');
+                const lightboxImg = document.getElementById('lightbox-img');
+                lightboxImg.src = lightboxImages[index];
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            }
+            
+            function closeLightbox() {
+                const lightbox = document.getElementById('lightbox');
+                lightbox.classList.remove('active');
+                document.body.style.overflow = ''; // Restore scrolling
+            }
+            
+            function changeLightboxImage(direction) {
+                currentLightboxIndex += direction;
+                
+                // Loop around
+                if (currentLightboxIndex < 0) {
+                    currentLightboxIndex = lightboxImages.length - 1;
+                } else if (currentLightboxIndex >= lightboxImages.length) {
+                    currentLightboxIndex = 0;
+                }
+                
+                const lightboxImg = document.getElementById('lightbox-img');
+                lightboxImg.src = lightboxImages[currentLightboxIndex];
+            }
+            
+            // Close lightbox with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeLightbox();
+                }
+            });
+            
+            // Navigate with arrow keys
+            document.addEventListener('keydown', function(e) {
+                const lightbox = document.getElementById('lightbox');
+                if (lightbox.classList.contains('active')) {
+                    if (e.key === 'ArrowLeft') {
+                        changeLightboxImage(-1);
+                    } else if (e.key === 'ArrowRight') {
+                        changeLightboxImage(1);
+                    }
+                }
+            });
+        </script>
+
+        
 
 </body>
 </html>
