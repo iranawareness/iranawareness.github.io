@@ -647,7 +647,7 @@
             font-size: 50px;
             color: white;
             cursor: pointer;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.3);
             border: none;
             padding: 10px 20px;
             z-index: 10001;
@@ -655,7 +655,7 @@
         }
 
         .lightbox-nav:hover {
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.5);
         }
 
         .lightbox-prev {
@@ -673,9 +673,24 @@
             }
             
             .lightbox-close {
-                top: 10px;
-                right: 10px;
-                font-size: 40px;
+                position: absolute;
+                top: 20px;
+                right: 30px;
+                font-size: 35px;           /* ← Reduced from 50px */
+                color: white;
+                cursor: pointer;
+                background: none;
+                border: none;
+                z-index: 10001;
+                line-height: 1;
+                transition: transform 0.2s;
+                font-weight: 300;          /* ← Makes it thinner */
+                opacity: 0.8;              /* ← Subtle transparency */
+            }
+
+            .lightbox-close:hover {
+                transform: scale(1.2);
+                opacity: 1;                /* ← Full opacity on hover */
             }
             
             .lightbox-nav {
@@ -1431,8 +1446,8 @@
     <!-- Lightbox -->
     <div id="lightbox" class="lightbox" onclick="closeLightbox()">
         <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
-        <button class="lightbox-nav lightbox-prev" onclick="event.stopPropagation(); changeLightboxImage(-1)">&#10094;</button>
-        <button class="lightbox-nav lightbox-next" onclick="event.stopPropagation(); changeLightboxImage(1)">&#10095;</button>
+        <button class="lightbox-nav lightbox-prev" onclick="event.stopPropagation(); changeLightboxImage(-1)">‹</button>
+        <button class="lightbox-nav lightbox-next" onclick="event.stopPropagation(); changeLightboxImage(1)">›</button>
         <img id="lightbox-img" src="" alt="">
     </div>
 
