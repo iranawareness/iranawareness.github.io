@@ -29,6 +29,7 @@
             line-height: 1.7;
             color: var(--text-color);
             background-color: #fff;
+            padding-top: 110px; /* Space for fixed header - Desktop */
         }
 
         h1, h2, h3, h4 {
@@ -38,17 +39,21 @@
         }
 
         header {
-            position: sticky;
-            top: 0;
+            position: fixed !important;
+            top: 0 !important;
             left: 0;
+            right: 0;
             width: 100%;
             background: var(--primary-color);
             color: white;
             padding: 20px 0;
-            z-index: 1000;
+            z-index: 9999;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            transform: translateZ(0);
         }
-        
+
         .progress-bar {
             position: absolute;
             bottom: 0;
@@ -93,13 +98,6 @@
             white-space: nowrap;
         }
 
-        @media (max-width: 480px) {
-            .logo {
-                font-size: 22px;
-                line-height: 1.1;
-            }
-        }
-
         .tagline {
             font-size: 13px;
             font-weight: 300;
@@ -127,6 +125,11 @@
 
         nav a:hover {
             color: var(--accent-color);
+        }
+
+        nav a.active {
+            color: #d60000;
+            border-bottom: 2px solid #d60000;
         }
 
         .hero {
@@ -198,6 +201,7 @@
             margin-bottom: 60px;
             padding-bottom: 40px;
             border-bottom: 1px solid var(--border-color);
+            scroll-margin-top: 130px; /* Space for fixed header when scrolling to section */
         }
 
         .article-section:last-child {
@@ -377,38 +381,17 @@
 
         /* Collapsible content styles */
         .collapsible-content {
-            max-height: 400px;
-            overflow: hidden;
-            position: relative;
-            transition: max-height 0.3s ease;
-        }
-
-        .collapsible-content.collapsed::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 100px;
-            background: linear-gradient(transparent, white);
-        }
-
-        .collapsible-content.expanded {
-            max-height: none;
-        }
-
-        .collapsible-content {
             overflow: hidden;
             height: 0;
             transition: height 0.4s ease;
         }
 
         .collapsible-content.collapsed {
-            height: 400px; /* preview height */
+            height: 400px;
         }
 
         .collapsible-content.expanded {
-            height: auto; /* temporary, set by JS */
+            height: auto;
         }
 
         .see-more-btn {
@@ -416,8 +399,8 @@
             color: white;
             border: none;
             padding: 12px 30px;
-            font-size: 13px;           /* slightly smaller = sharper */
-            font-weight: 700;          /* heavier */
+            font-size: 13px;
+            font-weight: 700;
             font-family: 'Open Sans', sans-serif;
             cursor: pointer;
             margin: 20px 0;
@@ -445,79 +428,6 @@
             color: #999;
             font-size: 18px;
             font-weight: 600;
-        }
-
-        @media (max-width: 768px) {
-
-            .header-container {
-                flex-direction: column-reverse; /* nav on top, logo below */
-                align-items: center;
-                gap: 10px;
-            }
-
-            nav ul {
-                flex-direction: row;          /* keep horizontal */
-                gap: 16px;
-                flex-wrap: wrap;              /* allow wrapping if needed */
-                justify-content: center;
-            }
-
-            nav a {
-                font-size: 12px;              /* slightly smaller */
-                white-space: nowrap;
-            }
-
-            .logo {
-                font-size: 22px;
-                text-align: center;
-            }
-
-            .tagline {
-                text-align: center;
-                margin-top: 2px;
-            }
-        }
-
-
-        @media (max-width: 968px) {
-            .content-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .main-content {
-                border-right: none;
-                padding-right: 0;
-            }
-
-            .sidebar {
-                padding-left: 0;
-            }
-
-            .hero h1 {
-                font-size: 36px;
-            }
-
-            /* nav ul {
-                flex-direction: column;
-                gap: 15px;
-            } */
-
-            .image-placeholder {
-                height: 250px;
-            }
-        }
-
-        nav a.active {
-            color: #d60000;
-            border-bottom: 2px solid #d60000;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        .article-section {
-            scroll-margin-top: 200px;
         }
 
         .memorial-link {
@@ -644,25 +554,25 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 24px;                     /* ← Smaller arrow */
+            font-size: 24px;
             color: white;
             cursor: pointer;
-            background: rgba(0, 0, 0, 0.2);     /* ← Subtle background */
+            background: rgba(0, 0, 0, 0.2);
             border: none;
-            border-radius: 100%;                  /* ← Perfect circle */
-            width: 20px;                         /* ← Small circle size */
+            border-radius: 100%;
+            width: 20px;
             height: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 10001;
             transition: all 0.3s;
-            padding: 0;                          /* ← Remove padding for perfect circle */
+            padding: 0;
         }
 
         .lightbox-nav:hover {
             background: rgba(0, 0, 0, 0.4);
-            transform: translateY(-50%) scale(1.1);  /* ← Keep centered while scaling */
+            transform: translateY(-50%) scale(1.1);
         }
 
         .lightbox-prev {
@@ -673,58 +583,6 @@
             right: 20px;
         }
 
-        @media (max-width: 768px) {
-            .lightbox-nav {
-                width: 38px;                     /* ← Even smaller on mobile */
-                height: 38px;
-                font-size: 20px;
-            }
-            
-            .lightbox-prev {
-                left: 10px;
-            }
-            
-            .lightbox-next {
-                right: 10px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .lightbox img {
-                max-width: 98%;
-                max-height: 98%;
-            }
-            
-            .lightbox-close {
-                position: absolute;
-                top: 20px;
-                right: 30px;
-                font-size: 35px;           /* ← Reduced from 50px */
-                color: white;
-                cursor: pointer;
-                background: none;
-                border: none;
-                z-index: 10001;
-                line-height: 1;
-                transition: transform 0.2s;
-                font-weight: 300;          /* ← Makes it thinner */
-                opacity: 0.8;              /* ← Subtle transparency */
-            }
-
-            .lightbox-close:hover {
-                transform: scale(1.2);
-                opacity: 1;                /* ← Full opacity on hover */
-            }
-            
-            .lightbox-nav {
-                font-size: 30px;
-                padding: 5px 10px;
-            }
-        }
-        
-
-
-
         /* Action cards container - responsive grid */
         .action-cards-container {
             display: grid;
@@ -733,7 +591,6 @@
             margin: 30px 0;
         }
 
-        /* Action card styling */
         .action-card {
             text-decoration: none;
             display: block;
@@ -753,23 +610,136 @@
             text-decoration: underline;
         }
 
-        /* Mobile responsive - STACK VERTICALLY */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* ========================
+        MOBILE RESPONSIVE STYLES
+        ======================== */
+
+        @media (max-width: 968px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .main-content {
+                border-right: none;
+                padding-right: 0;
+            }
+
+            .sidebar {
+                padding-left: 0;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .image-placeholder {
+                height: 250px;
+            }
+        }
+
         @media (max-width: 768px) {
+            body {
+                padding-top: 155px; /* More padding for taller mobile header */
+            }
+
+            header {
+                padding: 15px 0;
+            }
+
+            .header-container {
+                flex-direction: column-reverse;
+                align-items: center;
+                gap: 10px;
+            }
+
+            nav ul {
+                flex-direction: row;
+                gap: 16px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav a {
+                font-size: 12px;
+                white-space: nowrap;
+            }
+
+            .logo {
+                font-size: 22px;
+                text-align: center;
+            }
+
+            .tagline {
+                text-align: center;
+                margin-top: 2px;
+                font-size: 11px;
+            }
+
+            .article-section {
+                scroll-margin-top: 175px; /* More scroll margin for mobile */
+            }
+
+            /* Action cards - stack vertically on mobile */
             .action-cards-container {
-                grid-template-columns: 1fr; /* Single column on mobile */
+                grid-template-columns: 1fr;
                 gap: 20px;
             }
             
             .action-card-inner {
-                padding: 25px 20px; /* Slightly less padding on mobile */
+                padding: 25px 20px;
             }
             
             .action-card h3 {
-                font-size: 20px; /* Slightly smaller heading */
+                font-size: 20px;
             }
             
             .action-card p {
-                font-size: 14px; /* Slightly smaller text */
+                font-size: 14px;
+            }
+
+            /* Lightbox mobile adjustments */
+            .lightbox img {
+                max-width: 98%;
+                max-height: 98%;
+            }
+            
+            .lightbox-close {
+                font-size: 35px;
+                font-weight: 300;
+                opacity: 0.8;
+            }
+
+            .lightbox-close:hover {
+                opacity: 1;
+            }
+            
+            .lightbox-nav {
+                width: 38px;
+                height: 38px;
+                font-size: 20px;
+            }
+            
+            .lightbox-prev {
+                left: 10px;
+            }
+            
+            .lightbox-next {
+                right: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding-top: 150px;
+            }
+
+            .logo {
+                font-size: 20px;
+                line-height: 1.1;
             }
         }
     </style>
