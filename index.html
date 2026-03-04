@@ -873,6 +873,132 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        .student-message-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin-bottom: 10px;
+        }
+
+        .student-message-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(196,30,58,0.4);
+            border-radius: 8px;
+            padding: 22px;
+        }
+
+        .student-message-card h3 {
+            color: var(--accent-color);
+            font-size: 15px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .student-message-card p {
+            color: #ccc;
+            font-size: 14px;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .student-message-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        
+        .pdf-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .pdf-item {
+            width: 100%;
+        }
+
+        .pdf-item h3 {
+            font-size: 18px;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .pdf-embed-wrapper {
+            width: 100%;
+            height: 600px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .pdf-embed-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        /* Mobile: hide iframe, show download card */
+        .pdf-download-card {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .pdf-embed-wrapper {
+                display: none;
+            }
+
+            .pdf-download-card {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                background: var(--light-gray);
+                border: 1px solid var(--border-color);
+                border-left: 4px solid var(--accent-color);
+                border-radius: 5px;
+                padding: 22px 20px;
+                text-decoration: none;
+            }
+
+            .pdf-download-card:hover {
+                background: #ececec;
+            }
+
+            .pdf-download-icon {
+                font-size: 38px;
+                flex-shrink: 0;
+            }
+
+            .pdf-download-info p {
+                font-size: 13px;
+                color: #666;
+                margin-top: 4px;
+            }
+
+            .pdf-download-info span {
+                font-size: 16px;
+                font-weight: 700;
+                color: var(--primary-color);
+                font-family: 'Merriweather', serif;
+            }
+
+            .pdf-download-btn {
+                margin-left: auto;
+                background: var(--accent-color);
+                color: white;
+                padding: 10px 18px;
+                border-radius: 4px;
+                font-size: 13px;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                flex-shrink: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -945,25 +1071,25 @@
 
                 <!-- Add this right after the closing </article> tag of the "Who We Are" section -->
 
-                <article class="article-section" style="background: linear-gradient(135deg, #f5f5f5 0%, #fff 100%); padding: 40px; border-radius: 8px; border: 2px solid var(--accent-color);">
+                <!-- <article class="article-section" style="background: linear-gradient(135deg, #f5f5f5 0%, #fff 100%); padding: 40px; border-radius: 8px; border: 2px solid var(--accent-color);">
                     <div class="article-meta">Urgent Call to Action</div>
                     <h2 class="section-title">Stand With the Iranian People</h2>
                     <div class="article-content">
                         <p style="font-size: 18px; font-weight: 600; margin-bottom: 30px;">The world's attention can save lives. Your voice matters. Please take action now:</p>
                         
-                        <div class="action-cards-container">
+                        <div class="action-cards-container"> -->
                             <!-- Petition Card -->
-                            <a href="https://c.org/9y5c9vJRN4" target="_blank" class="action-card">
+                            <!-- <a href="https://c.org/9y5c9vJRN4" target="_blank" class="action-card">
                                 <div class="action-card-inner" style="background: white; border: 3px solid var(--accent-color); border-radius: 8px; padding: 30px; text-align: center;">
                                     <div style="font-size: 48px; margin-bottom: 15px;">✍️</div>
                                     <h3 style="color: var(--accent-color); font-size: 22px; margin-bottom: 15px;">Sign the Petition</h3>
                                     <p style="color: var(--text-color); font-size: 15px; line-height: 1.6; margin-bottom: 20px;">Add your name to demand international intervention and accountability for the genocide against Iranian protesters.</p>
                                     <span style="display: inline-block; background: var(--accent-color); color: white; padding: 12px 30px; border-radius: 5px; font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Sign Now →</span>
                                 </div>
-                            </a>
+                            </a> -->
 
                             <!-- Share on X Card -->
-                            <a href="https://x.com/trumpdailyposts/status/2018862054552297498?s=46&ct=rw-tg" target="_blank" class="action-card">
+                            <!-- <a href="https://x.com/trumpdailyposts/status/2018862054552297498?s=46&ct=rw-tg" target="_blank" class="action-card">
                                 <div class="action-card-inner" style="background: white; border: 3px solid #1DA1F2; border-radius: 8px; padding: 30px; text-align: center;">
                                     <div style="font-size: 48px; margin-bottom: 15px;">📢</div>
                                     <h3 style="color: #1DA1F2; font-size: 22px; margin-bottom: 15px;">Amplify the Message</h3>
@@ -971,13 +1097,98 @@
                                     <span style="display: inline-block; background: #1DA1F2; color: white; padding: 12px 30px; border-radius: 5px; font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;">Act Now →</span>
                                 </div>
                             </a>
-                        </div>
+                        </div> -->
 
-                        <p style="text-align: center; font-style: italic; color: #666; margin-top: 20px;">Every signature, every share, every voice helps break the silence around the genocide happening in Iran.</p>
+                        <!-- <p style="text-align: center; font-style: italic; color: #666; margin-top: 20px;">Every signature, every share, every voice helps break the silence around the genocide happening in Iran.</p>
                     </div>
-                </article>
+                </article> -->
 
                 
+                <article class="article-section" style="background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%); padding: 40px; border-radius: 8px; border: 2px solid var(--accent-color);">
+                    <div class="article-meta" style="color: #aaa;">A Message from Iranian-American Students</div>
+                    <h2 class="section-title" style="color: white; font-size: 28px;">Support the Iranian People, <span style="color: var(--accent-color);">Not the Terrorists</span></h2>
+                    <div class="article-content">
+                        <p style="font-size: 17px; color: #ddd; font-style: italic; border-left: 4px solid var(--accent-color); padding-left: 18px; margin-bottom: 30px;">
+                            To my fellow students: You see "Anti-War" protests today, but we must ask: <strong style="color: white;">Which war?</strong> The Islamic Regime has been at war with the Iranian people and the Free World for 47 years. Here is why targeted strikes are the <em>only</em> path to real peace:
+                        </p>
+
+                        <div class="student-message-grid">
+
+                            <div class="student-message-card">
+                                <h3>They Have American Blood on Their Hands</h3>
+                                <p>Since 1979, this regime has murdered hundreds of Americans—from the Hostage Crisis to the Beirut Embassy bombing. They supplied the bombs that killed US soldiers in Iraq and Afghanistan.</p>
+                            </div>
+
+                            <div class="student-message-card">
+                                <h3>Nuclear Terror Is Real</h3>
+                                <p>No country enriches uranium to 60% deep underground for "peaceful energy." They want a nuclear bomb to hold the world hostage. Stopping these sites makes America and the world safer.</p>
+                            </div>
+
+                            <div class="student-message-card">
+                                <h3>The Regime Is the Aggressor</h3>
+                                <p>Just last month, the regime murdered 36,500 innocent Iranians who were protesting for basic rights. "Anti-war" should mean stopping the killers in Tehran—not protecting them.</p>
+                            </div>
+
+                            <div class="student-message-card">
+                                <h3>Iran Is Not Iraq or Afghanistan</h3>
+                                <p>We don't need nation-building. Iran is an ancient, educated nation with a leader: Crown Prince Reza Pahlavi, who stands for democracy. No boots on the ground—we just need the suppression centers destroyed so we can take back our own country.</p>
+                            </div>
+
+                            <div class="student-message-card">
+                                <h3>Hitting the "Head of the Octopus"</h3>
+                                <p>The regime is the source of terror in Lebanon, Yemen, and Gaza. By hitting military centers in Iran, we stop global terrorism at its roots—not its symptoms.</p>
+                            </div>
+
+                            <div class="student-message-card">
+                                <h3>Freedom Is the Goal</h3>
+                                <p>These strikes target the weapons used to kill us—not the Iranian people. Breaking the regime's power gives 85 million Iranians the chance to finally be free.</p>
+                            </div>
+
+                        </div>
+
+                        <p style="text-align: center; color: #aaa; font-style: italic; margin-top: 20px; font-size: 14px;">Real anti-war means standing against the regime waging war on its own people for 47 years.</p>
+                    </div>
+                </article> 
+                
+                
+                <article class="article-section">
+                    <div class="article-meta">Documents</div>
+                    <h2 class="section-title">Read & Download</h2>
+                    <div class="article-content">
+
+                        <div class="pdf-stack">
+
+                            <!-- BrochureShah: 2 pages -->
+                            <div class="pdf-item">
+                                <h3>From Mass Protest to Brutal Repression</h3>
+                                <img
+                                    src="assets/BrochureShah_001.png"
+                                    alt="From Mass Protest to Brutal Repression - Page 1"
+                                    class="zoom-cursor"
+                                    onclick="openLightbox(7)"
+                                    style="width: 100%; display: block; margin-bottom: 8px; border: 1px solid var(--border-color); border-radius: 4px;">
+                                <img
+                                    src="assets/BrochureShah_002.png"
+                                    alt="From Mass Protest to Brutal Repression - Page 2"
+                                    class="zoom-cursor"
+                                    onclick="openLightbox(8)"
+                                    style="width: 100%; display: block; border: 1px solid var(--border-color); border-radius: 4px;">
+                            </div>
+
+                            <!-- TimeLine -->
+                            <div class="pdf-item" style="margin-top: 40px;">
+                                <h3>The Islamic Republic's Long War on America: A Timeline of Terrorism</h3>
+                                <img
+                                    src="assets/TimeLine_001.png"
+                                    alt="The Islamic Republic's Long War on America - Timeline of Terrorism"
+                                    class="zoom-cursor"
+                                    onclick="openLightbox(9)"
+                                    style="width: 100%; display: block; border: 1px solid var(--border-color); border-radius: 4px;">
+                            </div>
+
+                        </div>
+                    </div>
+                </article>
 
                 <!-- Add this section after "About" and before "Crisis" -->
                 <article id="story" class="article-section">
@@ -1927,13 +2138,16 @@
         <script>
             // Lightbox functionality
             const lightboxImages = [
-                'assets/Brochure1.jpg',
-                'assets/Brochure2.jpg',
-                'assets/Rally.png',
-                'assets/gallery/event1.jpg',
-                'assets/gallery/event2.jpg',
-                'assets/gallery/Banner1.PNG',
-                'assets/isa-flyer.jpg'
+                'assets/Brochure1.jpg',        // 0
+                'assets/Brochure2.jpg',        // 1
+                'assets/Rally.png',            // 2
+                'assets/gallery/event1.jpg',   // 3
+                'assets/gallery/event2.jpg',   // 4
+                'assets/gallery/Banner1.PNG',  // 5
+                'assets/isa-flyer.jpg',        // 6
+                'assets/BrochureShah_001.png', // 7
+                'assets/BrochureShah_002.png', // 8
+                'assets/TimeLine_001.png',     // 9
             ];
             
             let currentLightboxIndex = 0;
